@@ -4,6 +4,7 @@ import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import Input from "@/app/components/input/Input";
 import Button from "@/app/components/Button";
 import AuthSocialButton from "./AuthSocialButton";
+import { BsGithub, BsGoogle } from "react-icons/bs";
 
 type variant = "Login" | "Register";
 
@@ -74,7 +75,8 @@ const Authform = () => {
                             label="Name"
                             register={register}
                             errors={errors}
-                        />
+                            disabled={isLoading}
+                            />
                     )}
                     <Input
                         id="email"
@@ -82,14 +84,16 @@ const Authform = () => {
                         type="email"
                         register={register}
                         errors={errors}
-                    />
+                        disabled={isLoading}
+                        />
                     <Input
                         id="password"
                         label="Password"
                         type="password"
                         register={register}
                         errors={errors}
-                    />
+                        disabled={isLoading}
+                        />
                     <div>
                         <Button
                             disabled={isLoading}
@@ -140,10 +144,36 @@ const Authform = () => {
                     </div>
 
                     <div className="mt-6 flex gap-2">
-                        <AuthSocialButton />
+                        <AuthSocialButton
+                            icon={BsGithub}
+                            onClick={() => socialAction("github")}
+                        />
+                        <AuthSocialButton
+                            icon={BsGoogle}
+                            onClick={() => socialAction("google")}
+                        />
                     </div>
                 </div>
-
+                <div
+                    className="
+                        flex
+                        gap-2
+                        justify-center
+                        text-sm
+                        mt-6
+                        px-2
+                        text-gray-500
+                        ">
+                    <div>
+                        {variant === "Login" ? "New to Messenger?" : "Already have an account?"}
+                    </div>
+                    <div
+                    onClick={togglevariant}
+                    className="underline cursor-pointer"
+                    >
+                        {variant==="Login"?"Create an account":"Login"}
+                    </div>
+                </div>
             </div>
         </div>
     );
