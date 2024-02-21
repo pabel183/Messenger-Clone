@@ -26,7 +26,9 @@ const Avatar:React.FC<AvatarProps>=({
                 <Image
                 alt="Avatar"
                 src={user?.image || "/images/placeholder.jpg"}
-                fill
+                width={96}
+                height={96}
+                // fill
                 />  
             </div>
             <span className="
