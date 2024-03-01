@@ -46,4 +46,4 @@ const MobileItem:React.FC<MobileItemProps>=({
     );
 }
 
-export default MobileItem;
+export default MobileItem;  
